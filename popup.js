@@ -1,12 +1,11 @@
 // popup.js
 
 document.addEventListener('DOMContentLoaded', function() {
-  const urlInput = document.getElementById('urlInput');
-  const openButton = document.getElementById('openButton');
-
-  openButton.addEventListener('click', function() {
-    let url = urlInput.value.trim();
-    if (!url) url = 'https://www.google.com'; // default example
+  const input = document.getElementById('input');
+  const open = document.getElementById('open');
+  open.addEventListener('click', function() {
+    let url = input.value.trim();
+    if (!url) url = 'https://example.com'; // default
     if (url) {
       // Send a message to the background script
       chrome.runtime.sendMessage({
