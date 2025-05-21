@@ -4,18 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const urlInput = document.getElementById('urlInput');
   const openButton = document.getElementById('openButton');
 
-  // Set a default URL (optional)
-  urlInput.value = "https://rxoffice.site"; // Or any other default
-
   openButton.addEventListener('click', function() {
-    const url = urlInput.value.trim();
+    let url = urlInput.value.trim();
+    if (!url) url = 'https://www.google.com'; // default example
     if (url) {
       // Send a message to the background script
       chrome.runtime.sendMessage({
         action: "openDetachedWindow",
         url,
         width: 1200,
-        height: 800,
+        height: 700,
         left: undefined,
         top: undefined,
         focused: true,

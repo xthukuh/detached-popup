@@ -16,7 +16,7 @@ interface IOpenDetachedWindowMessage extends CreateType {
   action: 'openDetachedWindow';
   url: string;
   width?: number; // px default: 1200
-  height?: number; // px default: 800
+  height?: number; // px default: 700
   left?: number; // default: undefined
   top?: number; // default: undefined
   focused?: boolean; // default: true
@@ -24,12 +24,7 @@ interface IOpenDetachedWindowMessage extends CreateType {
 }
 
 // send message example
-chrome.runtime.sendMessage({
-  action: "openDetachedWindow",
-  url: 'https://example.com',
-  width: 1200,
-  height: 800
-}, function(response) {
+chrome.runtime.sendMessage({ action: "openDetachedWindow", url: 'https://example.com' }, function(response) {
   if (response && response.status === "success") {
     console.log("Detached window opened successfully!");
     window.close(); // Close the popup after sending the message
@@ -37,6 +32,16 @@ chrome.runtime.sendMessage({
     console.error("Failed to open detached window:", response ? response.message : "Unknown error");
   }
 });
+```
+
+Opens URLs from 'detach://' links in a detached, address-bar-less window.
+
+```html
+<a href="detach://https%3A%2F%2Fwww.google.com">Open Google Detached</a>
+<a id="example.com" href="">Open example.com in Detached</a>
+<script>
+  document.getElementById('example.com').href = 'detach://' + encodeURIComponent('https://example.com');
+</script>
 ```
 
 ## Preview

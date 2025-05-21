@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detached URL Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        a { display: block; margin-bottom: 10px; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>Click these links to open in a detached window:</h1>
+    <p>This demonstrates opening a standard URL:</p>
+    <a href="detach://https%3A%2F%2Fwww.google.com" data-options="width=800,height=500,top=200,left=200,focused=true,incognito=false">Open Google Detached (with options)</a>
+    <p>This demonstrates opening another standard URL:</p>
+    <a href="detach://https%3A%2F%2Fdeveloper.chrome.com%2Fdocs%2Fextensions%2F">Open Chrome Extensions Docs</a>
+    <p>This demonstrates opening a complex URL with query parameters:</p>
+    <a href="detach://https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ%26list%3DRDdQw4w9WgXcQ%26start_radio%3D1">Open Rickroll on YouTube</a>
+    <a id="example.com" href="#!">Open example.com in Detached</a>
+    <script>
+      // dynamically set href
+      document.getElementById('example.com').href = 'detach://' + encodeURIComponent('https://example.com');
+    </script>
+
+    <p>Regular link (should open in current tab):</p>
+    <a href="https://www.wikipedia.org" target="_blank">Go to Wikipedia (Normal - Opens in new tab)</a>
+</body>
+</html>

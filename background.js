@@ -5,14 +5,14 @@ chrome.runtime.onMessage.addListener(
       const { 
         url,
         width=1200,
-        height=800,
+        height=700,
         left,
         top,
         focused=true,
         incognito=false,
       } = request;
       let w = Number(width), h = Number(height);
-      w = Number.isInteger(w) && w > 0 ? w : 900;
+      w = Number.isInteger(w) && w > 0 ? w : 1200;
       h = Number.isInteger(h) && h > 0 ? h : 700;
       // Chrome's window creation API for "app mode"
       // The 'type: "popup"' and 'focused: true' are standard for a new window.
